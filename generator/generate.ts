@@ -80,11 +80,8 @@ export async function generateSchemas(readme: string, autogenlistConfig?: Autoge
 
 export async function schemaPostProcess(schemaPath: string, autogenlistConfig: AutogenlistConfig) {
     const namespace = path.basename(schemaPath.substring(0, schemaPath.lastIndexOf(path.extname(schemaPath))));
-
     const apiVersion = path.basename(path.resolve(`${schemaPath}/..`));
-
     const schemaConfig = await generateSchemaConfig(schemaPath, namespace, apiVersion, autogenlistConfig);
-
     const unknownScopeResources = schemaConfig.references.filter(x => x.scope & ScopeType.Unknown);
     if (autogenlistConfig && unknownScopeResources.length > 0) {
         throw new Error(`Unable to determine scope for resource types ${unknownScopeResources.map(x => x.type).join(', ')} for file ${schemaPath}`);
