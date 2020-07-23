@@ -13,7 +13,7 @@ const autogenlist: AutogenlistConfig[] = [
         basePath: 'adhybridhealthservice/resource-manager',
         namespace: 'Microsoft.ADHybridHealthService',
     },
-    { 
+    {
         basePath: 'cdn/resource-manager',
         namespace: 'Microsoft.Cdn',
     },
@@ -61,11 +61,11 @@ const autogenlist: AutogenlistConfig[] = [
         basePath: 'azurestack/resource-manager',
         namespace: 'Microsoft.AzureStack',
     },
-    { 
+    {
         basePath: 'batch/resource-manager',
         namespace: 'Microsoft.Batch',
     },
-    { 
+    {
         basePath: 'batchai/resource-manager',
         namespace: 'Microsoft.BatchAI',
     },
@@ -104,6 +104,10 @@ const autogenlist: AutogenlistConfig[] = [
         namespace: 'Microsoft.Billing',
     },
     {
+        basePath: 'changeanalysis/resource-manager',
+        namespace: 'Microsoft.ChangeAnalysis',
+    },
+    {
         basePath: 'cognitiveservices/resource-manager',
         namespace: 'Microsoft.CognitiveServices',
     },
@@ -133,7 +137,7 @@ const autogenlist: AutogenlistConfig[] = [
         basePath: 'databox/resource-manager',
         namespace: 'Microsoft.DataBox',
     },
-    { 
+    {
         basePath: 'operationalinsights/resource-manager',
         namespace: 'Microsoft.OperationalInsights',
     },
@@ -230,7 +234,7 @@ const autogenlist: AutogenlistConfig[] = [
         basePath: 'resourcegraph/resource-manager',
         namespace: 'Microsoft.ResourceGraph',
     },
-    { 
+    {
         basePath: 'redis/resource-manager',
         namespace: 'Microsoft.Cache',
     },
@@ -245,12 +249,12 @@ const autogenlist: AutogenlistConfig[] = [
     {
         basePath: 'resourcehealth/resource-manager',
         namespace: 'Microsoft.ResourceHealth',
-    }, 
+    },
     {
         basePath: 'EnterpriseKnowledgeGraph/resource-manager',
         namespace: 'Microsoft.EnterpriseKnowledgeGraph',
     },
-    { 
+    {
         basePath: 'domainservices/resource-manager',
         namespace: 'Microsoft.AAD',
     },
@@ -299,7 +303,7 @@ const autogenlist: AutogenlistConfig[] = [
         basePath: 'labservices/resource-manager',
         namespace: 'Microsoft.LabServices',
     },
-    { 
+    {
         basePath: 'eventgrid/resource-manager',
         namespace: 'Microsoft.EventGrid',
         resourceConfig: [
@@ -415,6 +419,10 @@ const autogenlist: AutogenlistConfig[] = [
         namespace: 'Microsoft.PowerBI',
     },
     {
+        basePath: 'redhatopenshift/resource-manager',
+        namespace: 'Microsoft.RedHatOpenShift',
+    },
+    {
         basePath: 'resources/resource-manager',
         namespace: 'Microsoft.Resources',
         resourceConfig: [
@@ -498,11 +506,11 @@ const autogenlist: AutogenlistConfig[] = [
         basePath: 'visualstudio/resource-manager',
         namespace: 'Microsoft.VisualStudio',
     },
-    { 
+    {
         basePath: 'sql/resource-manager',
         namespace: 'Microsoft.Sql',
     },
-    { 
+    {
         basePath: 'scheduler/resource-manager',
         namespace: 'Microsoft.Scheduler',
     },
@@ -510,16 +518,16 @@ const autogenlist: AutogenlistConfig[] = [
         basePath: 'search/resource-manager',
         namespace: 'Microsoft.Search',
     },
-    { 
+    {
         basePath: 'subscription/resource-manager',
         namespace: 'Microsoft.Subscription',
     },
-    { 
+    {
         basePath: 'storsimple8000series/resource-manager',
         namespace: 'Microsoft.StorSimple',
         suffix: '8000',
     },
-    { 
+    {
         basePath: 'support/resource-manager',
         namespace: 'Microsoft.Support',
     },
@@ -540,6 +548,10 @@ const autogenlist: AutogenlistConfig[] = [
     {
         basePath: 'imagebuilder/resource-manager',
         namespace: 'Microsoft.VirtualMachineImages',
+    },
+    {
+        basePath: 'vmware/resource-manager',
+        namespace: 'Microsoft.AVS',
     },
     {
         basePath: 'windowsesu/resource-manager',
