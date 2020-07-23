@@ -1034,6 +1034,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2020-03-20/Microsoft.AVS.json#/resourceDefinitions/privateClouds_hcxEnterpriseSites"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-07-24-preview/Microsoft.AzureData.json#/resourceDefinitions/dataControllers"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2019-07-24-preview/Microsoft.AzureData.json#/resourceDefinitions/hybridDataManagers"
         },
         {
@@ -1041,6 +1044,9 @@
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-07-24-preview/Microsoft.AzureData.json#/resourceDefinitions/sqlInstances"
+        },
+        {
+          "$ref": "https://schema.management.azure.com/schemas/2019-07-24-preview/Microsoft.AzureData.json#/resourceDefinitions/sqlManagedInstances"
         },
         {
           "$ref": "https://schema.management.azure.com/schemas/2019-07-24-preview/Microsoft.AzureData.json#/resourceDefinitions/sqlServerInstances"
