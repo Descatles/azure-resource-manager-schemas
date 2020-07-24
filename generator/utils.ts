@@ -168,7 +168,7 @@ export function apiVersionCompare(a: string, b: string) {
   }
 }
 
-export async function readJsonFile(filePath: string) {    
+export async function readJsonFile(filePath: string) {
     const rawContents = await readFile(filePath, { encoding: 'utf8' });
 
     return JSON.parse(rawContents);
@@ -218,7 +218,7 @@ export function chunker<T>(input: T[], chunks: number): T[][] {
             remainder--;
             chunkSize++;
         }
-        
+
         const chunk = input.slice(position, position + chunkSize);
         output.push(chunk);
         position += chunkSize;
