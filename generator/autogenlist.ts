@@ -247,9 +247,9 @@ const autogenlist: AutogenlistConfig[] = [
         namespace: 'Microsoft.HDInsight',
     },
     {
-        basePath: 'resourcehealth/resource-manager',
-        namespace: 'Microsoft.ResourceHealth',
-    },
+        basePath: 'resourcehealth/resource-manager',
+        namespace: 'Microsoft.ResourceHealth',
+    },
     {
         basePath: 'EnterpriseKnowledgeGraph/resource-manager',
         namespace: 'Microsoft.EnterpriseKnowledgeGraph',
@@ -494,10 +494,10 @@ const autogenlist: AutogenlistConfig[] = [
         namespace: 'Microsoft.ImportExport'
     },
     {
-        basePath: 'storSimple1200Series/resource-manager',
-        namespace: 'Microsoft.StorSimple',
+        basePath: 'storSimple1200Series/resource-manager',
+        namespace: 'Microsoft.StorSimple',
         suffix: '1200'
-    },
+    },
     {
         basePath: 'vmwarecloudsimple/resource-manager',
         namespace: 'Microsoft.VMwareCloudSimple',
