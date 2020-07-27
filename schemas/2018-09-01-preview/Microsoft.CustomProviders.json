@@ -161,7 +161,7 @@
     "CustomRPManifestProperties": {
       "type": "object",
       "properties": {
-        "actions": {
+        "act": {
           "oneOf": [
             {
               "type": "array",
