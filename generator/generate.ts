@@ -79,7 +79,7 @@ export async function generateSchemas(readme: string, autogenlistConfig?: Autoge
     return schemaConfigs;
 }
 
-export async function schemaPostProcess(schemaPath: string, isNew: boolean, autogenlistConfig: AutogenlistConfig) {
+export async function schemaPostProcess(schemaPath: string, isNew: boolean, autogenlistConfig?: AutogenlistConfig) {
     const namespace = path.basename(schemaPath.substring(0, schemaPath.lastIndexOf(path.extname(schemaPath))));
     const apiVersion = path.basename(path.resolve(`${schemaPath}/..`));
     const schemaConfig = await generateSchemaConfig(schemaPath, namespace, apiVersion, autogenlistConfig);
