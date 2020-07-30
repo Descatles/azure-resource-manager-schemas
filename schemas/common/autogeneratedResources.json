@@ -1478,6 +1478,9 @@
           "$ref": "https://schema.management.azure.com/schemas/2018-10-01/Microsoft.ContainerInstance.json#/resourceDefinitions/containerGroups"
         },
         {
+          "$ref": "https://schema.management.azure.com/schemas/2019-12-01/Microsoft.ContainerInstance.json#/resourceDefinitions/containerGroups"
+        },
+        {
           "$ref": "https://schema.management.azure.com/schemas/2016-06-27-preview/Microsoft.ContainerRegistry.json#/resourceDefinitions/registries"
         },
         {
