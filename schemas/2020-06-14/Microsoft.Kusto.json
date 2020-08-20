@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.management.azure.com/schemas/2019-09-07/Microsoft.Kusto.json#",
+  "id": "https://schema.management.azure.com/schemas/2020-06-14/Microsoft.Kusto.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Microsoft.Kusto",
   "description": "Microsoft Kusto Resource Types",
@@ -10,7 +10,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-09-07"
+            "2020-06-14"
           ]
         },
         "identity": {
@@ -47,6 +47,9 @@
           "type": "array",
           "items": {
             "oneOf": [
+              {
+                "$ref": "#/definitions/clusters_principalAssignments_childResource"
+              },
               {
                 "$ref": "#/definitions/clusters_databases_childResource"
               },
@@ -119,7 +122,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-09-07"
+            "2020-06-14"
           ]
         },
         "location": {
@@ -170,7 +173,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-09-07"
+            "2020-06-14"
           ]
         },
         "location": {
@@ -185,6 +188,9 @@
           "type": "array",
           "items": {
             "oneOf": [
+              {
+                "$ref": "#/definitions/clusters_databases_principalAssignments_childResource"
+              },
               {
                 "$ref": "#/definitions/clusters_databases_dataConnections_childResource"
               }
@@ -222,7 +228,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-09-07"
+            "2020-06-14"
           ]
         },
         "location": {
@@ -246,6 +252,84 @@
         "type"
       ],
       "description": "Microsoft.Kusto/clusters/databases/dataConnections"
+    },
+    "clusters_databases_principalAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-14"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Kusto principalAssignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DatabasePrincipalProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A class representing database principal property."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Kusto/clusters/databases/principalAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Kusto/clusters/databases/principalAssignments"
+    },
+    "clusters_principalAssignments": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-14"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Kusto principalAssignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ClusterPrincipalProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A class representing cluster principal property."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Microsoft.Kusto/clusters/principalAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Kusto/clusters/principalAssignments"
     }
   },
   "definitions": {
@@ -314,7 +398,16 @@
                 "Standard_D11_v2",
                 "Standard_D12_v2",
                 "Standard_L4s",
-                "Dev(No SLA)_Standard_D11_v2"
+                "Dev(No SLA)_Standard_D11_v2",
+                "Standard_E2a_v4",
+                "Standard_E4a_v4",
+                "Standard_E8a_v4",
+                "Standard_E16a_v4",
+                "Standard_E8as_v4+1TB_PS",
+                "Standard_E8as_v4+2TB_PS",
+                "Standard_E16as_v4+3TB_PS",
+                "Standard_E16as_v4+4TB_PS",
+                "Dev(No SLA)_Standard_E2a_v4"
               ]
             },
             {
@@ -345,6 +438,56 @@
       ],
       "description": "Azure SKU definition."
     },
+    "ClusterPrincipalProperties": {
+      "type": "object",
+      "properties": {
+        "principalId": {
+          "type": "string",
+          "description": "The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name."
+        },
+        "principalType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "App",
+                "Group",
+                "User"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Principal type."
+        },
+        "role": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "AllDatabasesAdmin",
+                "AllDatabasesViewer"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Cluster principal role."
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "The tenant id of the principal"
+        }
+      },
+      "required": [
+        "principalId",
+        "principalType",
+        "role"
+      ],
+      "description": "A class representing cluster principal property."
+    },
     "ClusterProperties": {
       "type": "object",
       "properties": {
@@ -358,6 +501,30 @@
             }
           ],
           "description": "A boolean value that indicates if the cluster's disks are encrypted."
+        },
+        "enableDoubleEncryption": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A boolean value that indicates if double encryption is enabled."
+        },
+        "enablePurge": {
+          "oneOf": [
+            {
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A boolean value that indicates if the purge operations are enabled."
         },
         "enableStreamingIngest": {
           "oneOf": [
@@ -427,7 +594,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-09-07"
+            "2020-06-14"
           ]
         },
         "location": {
@@ -478,7 +645,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-09-07"
+            "2020-06-14"
           ]
         },
         "location": {
@@ -520,7 +687,7 @@
         "apiVersion": {
           "type": "string",
           "enum": [
-            "2019-09-07"
+            "2020-06-14"
           ]
         },
         "location": {
@@ -545,9 +712,141 @@
       ],
       "description": "Microsoft.Kusto/clusters/databases/dataConnections"
     },
+    "clusters_databases_principalAssignments_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-14"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Kusto principalAssignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DatabasePrincipalProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A class representing database principal property."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "principalAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Kusto/clusters/databases/principalAssignments"
+    },
+    "clusters_principalAssignments_childResource": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "type": "string",
+          "enum": [
+            "2020-06-14"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Kusto principalAssignment."
+        },
+        "properties": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ClusterPrincipalProperties"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A class representing cluster principal property."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "principalAssignments"
+          ]
+        }
+      },
+      "required": [
+        "apiVersion",
+        "name",
+        "properties",
+        "type"
+      ],
+      "description": "Microsoft.Kusto/clusters/principalAssignments"
+    },
     "Componentssgqdofschemasidentitypropertiesuserassignedidentitiesadditionalproperties": {
       "type": "object",
       "properties": {}
+    },
+    "DatabasePrincipalProperties": {
+      "type": "object",
+      "properties": {
+        "principalId": {
+          "type": "string",
+          "description": "The principal ID assigned to the database principal. It can be a user email, application ID, or security group name."
+        },
+        "principalType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "App",
+                "Group",
+                "User"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Principal type."
+        },
+        "role": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Admin",
+                "Ingestor",
+                "Monitor",
+                "User",
+                "UnrestrictedViewers",
+                "Viewer"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "Database principal role."
+        },
+        "tenantId": {
+          "type": "string",
+          "description": "The tenant id of the principal"
+        }
+      },
+      "required": [
+        "principalId",
+        "principalType",
+        "role"
+      ],
+      "description": "A class representing database principal property."
     },
     "DatabaseStatistics": {
       "type": "object",
@@ -569,6 +868,21 @@
     "EventGridConnectionProperties": {
       "type": "object",
       "properties": {
+        "blobStorageEventType": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "Microsoft.Storage.BlobCreated",
+                "Microsoft.Storage.BlobRenamed"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The name of blob storage event type to process."
+        },
         "consumerGroup": {
           "type": "string",
           "description": "The event hub consumer group."
@@ -589,7 +903,11 @@
                 "RAW",
                 "SINGLEJSON",
                 "AVRO",
-                "TSVE"
+                "TSVE",
+                "PARQUET",
+                "ORC",
+                "APACHEAVRO",
+                "W3CLOGFILE"
               ]
             },
             {
@@ -601,6 +919,17 @@
         "eventHubResourceId": {
           "type": "string",
           "description": "The resource ID where the event grid is configured to send events."
+        },
+        "ignoreFirstRecord": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "A Boolean value that, if set to true, indicates that ingestion should ignore the first record of every file"
         },
         "mappingRuleName": {
           "type": "string",
@@ -617,10 +946,8 @@
       },
       "required": [
         "consumerGroup",
-        "dataFormat",
         "eventHubResourceId",
-        "storageAccountResourceId",
-        "tableName"
+        "storageAccountResourceId"
       ],
       "description": "Class representing the Kusto event grid connection properties."
     },
@@ -653,6 +980,21 @@
     "EventHubConnectionProperties": {
       "type": "object",
       "properties": {
+        "compression": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "None",
+                "GZip"
+              ]
+            },
+            {
+              "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
+            }
+          ],
+          "description": "The event hub messages compression type."
+        },
         "consumerGroup": {
           "type": "string",
           "description": "The event hub consumer group."
@@ -673,7 +1015,11 @@
                 "RAW",
                 "SINGLEJSON",
                 "AVRO",
-                "TSVE"
+                "TSVE",
+                "PARQUET",
+                "ORC",
+                "APACHEAVRO",
+                "W3CLOGFILE"
               ]
             },
             {
@@ -803,7 +1149,11 @@
                 "RAW",
                 "SINGLEJSON",
                 "AVRO",
-                "TSVE"
+                "TSVE",
+                "PARQUET",
+                "ORC",
+                "APACHEAVRO",
+                "W3CLOGFILE"
               ]
             },
             {
@@ -836,7 +1186,7 @@
         },
         "sharedAccessPolicyName": {
           "type": "string",
-          "description": "The name of the share access policy name"
+          "description": "The name of the share access policy"
         },
         "tableName": {
           "type": "string",
@@ -848,7 +1198,7 @@
         "iotHubResourceId",
         "sharedAccessPolicyName"
       ],
-      "description": "Class representing the Kusto iot hub connection properties."
+      "description": "Class representing the Kusto Iot hub connection properties."
     },
     "IotHubDataConnection": {
       "type": "object",
@@ -868,7 +1218,7 @@
               "$ref": "https://schema.management.azure.com/schemas/common/definitions.json#/definitions/expression"
             }
           ],
-          "description": "Class representing the Kusto iot hub connection properties."
+          "description": "Class representing the Kusto Iot hub connection properties."
         }
       },
       "required": [
